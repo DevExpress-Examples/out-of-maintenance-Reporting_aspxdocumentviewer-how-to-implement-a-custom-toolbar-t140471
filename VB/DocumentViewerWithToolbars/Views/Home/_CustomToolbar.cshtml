@@ -1,0 +1,157 @@
+﻿@{
+    var prefix = ViewData["prefix"] as string ?? "_";
+}
+
+<script src="~/Scripts/toolbar.js"></script>
+
+<div class="toolbar">
+    <ul>
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "Search";
+           settings.ToolTip = "Display the search window";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnSearch.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnSearchDisabled.png";
+       }).GetHtml()
+        </li>
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "Print";
+           settings.ToolTip = "Print the report";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnPrint.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnPrintDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "PrintPage";
+           settings.ToolTip = "Print the current page";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnPrintPage.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnPrintPageDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "FirstPage";
+           settings.ToolTip = "First Page";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnFirstPage.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnFirstPageDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "PrevPage";
+           settings.ToolTip = "Previous Page";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnPrevPage.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnPrevPageDisabled.png";
+       }).GetHtml()
+        </li>
+        
+        <li>
+            @Html.DevExpress().ComboBox(settings => {
+           settings.Name = prefix + "Page";
+           settings.ToolTip = "Select page number";
+           settings.Width = Unit.Pixel(60);
+           settings.Height = Unit.Pixel(26);
+           settings.Properties.Caption = "Page";
+           settings.Properties.CaptionSettings.VerticalAlign = EditorCaptionVerticalAlign.Middle;
+           settings.Properties.CaptionSettings.ShowColon = false;
+           settings.Properties.EnableClientSideAPI = true;
+       }).GetHtml()
+        </li>
+        
+        <li>
+            @Html.DevExpress().TextBox(settings => {
+           settings.Name = prefix + "PageCount";
+           settings.ToolTip = "Total page count";
+           settings.ReadOnly = true;
+           settings.Properties.EnableClientSideAPI = true;
+           settings.Width = Unit.Pixel(60);
+           settings.Height = Unit.Pixel(26);
+           settings.Properties.Caption = "of";
+           settings.Properties.CaptionSettings.VerticalAlign = EditorCaptionVerticalAlign.Middle;
+           settings.Properties.CaptionSettings.ShowColon = false;
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "NextPage";
+           settings.ToolTip = "Next Page";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnNextPage.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnNextPageDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "LastPage";
+           settings.ToolTip = "Last Page";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnLastPage.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnLastPageDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "Save";
+           settings.ToolTip = "Export a report and save it to the disk";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnSave.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnSaveDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @Html.DevExpress().Button(settings => {
+           settings.Name = prefix + "SaveWindow";
+           settings.ToolTip = "Export a report and show it in a new window";
+           settings.Text = "";
+           settings.EnableClientSideAPI = true;
+           settings.Images.Image.Url = "~/Content/CustomToolbar/BtnSaveWindow.png";
+           settings.Images.Image.UrlDisabled = "~/Content/CustomToolbar/BtnSaveWindowDisabled.png";
+       }).GetHtml()
+        </li>
+
+        <li>
+            @{
+                var formats = new[] {
+                    new { Value = "pdf", Text = "Pdf" },
+                    new { Value = "xlsx", Text = "Xlsx" },
+                    new { Value = "rtf", Text = "Rtf" },
+                    new { Value = "html", Text = "Html" },
+                    new { Value = "txt", Text = "Text" },
+                    new { Value = "png", Text = "Png" }
+                };
+            }
+            @Html.DevExpress().ComboBox(settings => {
+           settings.Name = prefix + "ExportFormat";
+           settings.ToolTip = "Select export format";
+           settings.Properties.EnableClientSideAPI = true;
+           settings.Width = Unit.Pixel(60);
+           settings.Height = Unit.Pixel(26);
+           settings.SelectedIndex = 0;
+           settings.Properties.ValueField = "Value";
+           settings.Properties.TextField = "Text";
+       }).BindList(formats).GetHtml()
+        </li>
+    </ul>
+</div>

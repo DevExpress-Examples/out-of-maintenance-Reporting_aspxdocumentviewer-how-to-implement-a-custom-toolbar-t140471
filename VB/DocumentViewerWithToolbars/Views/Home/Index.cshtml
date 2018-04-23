@@ -1,0 +1,20 @@
+﻿@model XtraReport
+@{
+    ViewBag.Title = "Index";
+    const string
+        toolbar1 = "toolbar1",
+        toolbar2 = "toolbar2",
+        documentViewerName = "documentViewer";
+}
+
+<h2>Index</h2>
+
+@Html.Partial("_CustomToolbar", new ViewDataDictionary { {"prefix", toolbar1 } })
+@Html.Action("DocumentViewerPartial", new ViewDataDictionary { { "documentViewerName", documentViewerName } })
+@Html.Partial("_CustomToolbar", new ViewDataDictionary { { "prefix", toolbar2 } })
+
+<script>
+    (@documentViewerName).Init.AddHandler(function() {
+        toolbar.initialize(['@toolbar1', '@toolbar2'], @documentViewerName);
+    });
+</script>
